@@ -19,19 +19,19 @@
                 <div class="col-12">
                     <label for="name" class="form-label">Name</label>
                     <input type="text" class="form-control" id="name" name="name"
-                        value="@if (isset($project)) {{ old('name', $project->name) }}@else{{ old('name') }} @endif"
+                        value="@if (isset($element)) {{ old('name', $element->name) }}@else{{ old('name') }} @endif"
                         required>
                 </div>
                 <div class="col-12">
                     <label for="slug" class="form-label">Slug</label>
                     <input type="text" class="form-control" id="slug" name="slug"
-                        value="@if (isset($project)) {{ old('slug', $project->slug) }}@else{{ old('slug') }} @endif">
+                        value="@if (isset($element)) {{ old('slug', $element->slug) }}@else{{ old('slug') }} @endif">
                 </div>
                 @if(!isset($type) && !isset($technology))
                 <div class="col-12">
                     <label for="link" class="form-label">Link</label>
                     <input type="text" class="form-control" id="link" name="link"
-                        value="@if (isset($project)) {{ old('link', $project->link) }}@else{{ old('link') }} @endif">
+                        value="@if (isset($element)) {{ old('link', $element->link) }}@else{{ old('link') }} @endif">
                 </div>
                 @endif
                 @if(isset($types))
@@ -40,7 +40,7 @@
                     <select class="form-select" aria-label="Default select example" id="types" name="type_id">
                         <option value="">Open this select menu</option>
                         @foreach ($types as $type)
-                            <option value="{{ $type->id }}" @if(old('type_id') == $type->id || (isset($project) && $project->type_id == $type->id)) selected @endif>{{ $type->name }}</option>
+                            <option value="{{ $type->id }}" @if(old('type_id') == $type->id || (isset($element) && $element->type_id == $type->id)) selected @endif>{{ $type->name }}</option>
                         @endforeach
                       </select>
                 </div>
@@ -50,7 +50,7 @@
                     <label for="technology" class="form-label col-12">Technologies</label>
                     @foreach ($technologies as $technology)
                     <div class="form-check form-check-inline" id="technologies">
-                      <input class="form-check-input" type="checkbox" id="technology-{{ $technology->id }}" value="{{ $technology->id }}" name="technologies[]" @if((isset($project) && $project->technologies->contains($technology->id)) || in_array($technology->id, old('technologies', []))) checked @endif>
+                      <input class="form-check-input" type="checkbox" id="technology-{{ $technology->id }}" value="{{ $technology->id }}" name="technologies[]" @if((isset($element) && $element->technologies->contains($technology->id)) || in_array($technology->id, old('technologies', []))) checked @endif>
                       <label class="form-check-label" for="technology-{{ $technology->id }}">{{ $technology->name }}</label>
                     </div>
                     @endforeach

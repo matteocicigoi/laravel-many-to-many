@@ -10,11 +10,11 @@
 @endsection
 @section('route')
     @if (!isset($type) && !isset($technology))
-        {{ route('admin.projects.update', $project) }}
+        {{ route('admin.projects.update', $element) }}
     @elseif (isset($type))
-        {{ route('admin.types.update', $project) }}
+        {{ route('admin.types.update', $element) }}
     @else
-        {{ route('admin.technologies.update', $project) }}
+        {{ route('admin.technologies.update', $element) }}
     @endif
 @endsection
 @section('method')

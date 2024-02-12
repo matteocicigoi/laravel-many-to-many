@@ -17,9 +17,13 @@ class TechnologiesController extends Controller
      */
     public function index()
     {
-        $projects = Technology::all();
-        $technology =  true;
-        return view('admin.projects.index', compact('projects'), compact('technology'));
+        $data = [
+            'elements' => Technology::all(),
+            'element_route' => 'technologies',
+            'element_title' => 'Technology',
+            'skip_type_col' => true,
+        ];
+        return view('admin.projects.index', $data);
     }
 
     /**
@@ -55,8 +59,10 @@ class TechnologiesController extends Controller
      */
     public function show(Technology $technology)
     {
-        $project = $technology;
-        return view('admin.projects.show', compact('project'));
+        $data = [
+            'element' => $technology
+        ];
+        return view('admin.projects.show', $data);
     }
 
     /**
@@ -64,9 +70,11 @@ class TechnologiesController extends Controller
      */
     public function edit(Technology $technology)
     {
-        $project = $technology;
-        $technology =  true;
-        return view('admin.projects.update', compact('project'), compact('technology'));
+        $data = [
+            'element' => $technology,
+            'technology' => true
+        ];
+        return view('admin.projects.update', $data);
     }
 
     /**

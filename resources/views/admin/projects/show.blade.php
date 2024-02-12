@@ -7,12 +7,12 @@
             </div>
         @endif
         <ul>
-            <li>Nome: {{ $project->name }}</li>
-            <li>Slug: {{ $project->slug }}</li>
-            @if (isset($project->technologies) && count($project->technologies) > 0)
+            <li>Nome: {{ $element->name }}</li>
+            <li>Slug: {{ $element->slug }}</li>
+            @if (isset($element->technologies) && count($element->technologies) > 0)
                 <li>Technologies:
                     <ul>
-                        @foreach ($project->technologies as $technology)
+                        @foreach ($element->technologies as $technology)
                             <li>{{ $technology->name }}</li>
                         @endforeach
                     </ul>

@@ -16,9 +16,13 @@ class TypeController extends Controller
      */
     public function index()
     {
-        $projects = Type::all();
-        $type =  true;
-        return view('admin.projects.index', compact('projects'), compact('type'));
+        $data = [
+            'elements' => Type::all(),
+            'element_route' => 'types',
+            'element_title' => 'Type',
+            'skip_type_col' => true,
+        ];
+        return view('admin.projects.index', $data);
     }
 
     /**
@@ -54,8 +58,10 @@ class TypeController extends Controller
      */
     public function show(Type $type)
     {
-        $project = $type;
-        return view('admin.projects.show', compact('project'));
+        $data = [
+            'element' => $type
+        ];
+        return view('admin.projects.show', $data);
     }
 
     /**
@@ -63,9 +69,11 @@ class TypeController extends Controller
      */
     public function edit(Type $type)
     {
-        $project = $type;
-        $type =  true;
-        return view('admin.projects.update', compact('project'), compact('type'));
+        $data = [
+            'element' => $type,
+            'type' => true
+        ];
+        return view('admin.projects.update', $data);
     }
 
     /**

@@ -18,8 +18,13 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
-        return view('admin.projects.index', compact('projects'));
+        $data = [
+            'elements' => Project::all(),
+            'element_route' => 'projects',
+            'element_title' => 'Project',
+
+        ];
+        return view('admin.projects.index', $data);
     }
 
     /**
@@ -61,7 +66,10 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        return view('admin.projects.show', compact('project'));
+        $data = [
+            'element' => $project
+        ];
+        return view('admin.projects.show', $data);
     }
 
     /**
@@ -70,10 +78,11 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $data = [
+            'element' => $project,
             'types' => Type::all(),
             'technologies' => Technology::all()
         ];
-        return view('admin.projects.update', compact('project'), $data);
+        return view('admin.projects.update', $data);
     }
 
     /**
