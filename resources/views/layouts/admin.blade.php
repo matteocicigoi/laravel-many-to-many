@@ -51,9 +51,6 @@
 
         <div class="container-fluid" style="height: calc(100vh - 59px)">
             <div class="row h-100">
-                <!-- Definire solo parte del menu di navigazione inizialmente per poi
-        aggiungere i link necessari giorno per giorno
-        -->
                 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block navbar-dark sidebar collapse border border-primary border-top-0 bg-dark-subtle">
                     <div class="position-sticky pt-3">
                         <ul class="nav flex-column">
@@ -70,15 +67,15 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-success {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
+                                <a class="nav-link text-warning {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
                                     href="{{ route('admin.types.index') }}">
                                     <i class="fa-solid fa-layer-group fa-lg fa-fw"></i> Types 
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-success {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
+                                <a class="nav-link text-info {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
                                     href="{{ route('admin.technologies.index') }}">
-                                    <i class="fa-solid fa-layer-group fa-lg fa-fw"></i> Technologies 
+                                    <i class="fa-solid fa-tag fa-lg fa-fw"></i> Technologies 
                                 </a>
                             </li>
                         </ul>

@@ -1,1 +1,1 @@
-# Esercizio: Laravel Boolfolio - Project Typology
+# Esercizio: Laravel Boolfolio - Project Technology
