@@ -27,7 +27,8 @@ class StoreProjectsRequest extends FormRequest
             'slug' => ['max:40', 'nullable'],
             'link' => ['max:255', 'url', 'nullable'],
             'type_id' => ['exists:types,id', 'nullable'],
-            'technologies' => ['exists:technologies,id', 'nullable']
+            'technologies' => ['exists:technologies,id', 'nullable'],
+            'image' => ['nullable', 'image']
         ];
     }
 }

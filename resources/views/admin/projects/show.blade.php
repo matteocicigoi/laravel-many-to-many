@@ -18,6 +18,10 @@
                     </ul>
                 </li>
             @endif
+            @if (isset($element->image))
+            <li><img class="col-6 object-fit-contain " src="{{ asset('storage/' .  $element->image)}}" alt="image">
+            </li>
+        @endif
         </ul>
     </div>
 @endsection

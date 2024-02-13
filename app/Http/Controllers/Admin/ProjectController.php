@@ -10,6 +10,7 @@ use App\Models\Project;
 use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -47,6 +48,10 @@ class ProjectController extends Controller
         $new_project->name = $data['name'];
         $new_project->link = $data['link'];
         $new_project->type_id = $data['type_id'];
+        if(!empty($data['image'])){
+            $img_path = Storage::put('uploads', $data['image']);
+            $new_project->image = $img_path;
+        }
         // se l'utente non inserisce uno slug
         if(!empty($data['slug'])){
             $new_project->slug = Str::of($data['slug'])->slug('-');
@@ -91,6 +96,14 @@ class ProjectController extends Controller
     public function update(UpdateProjectsRequest $request, Project $project)
     {
         $data = $request->validated();
+        if(!empty($data['image'])){
+            $img_path = Storage::put('uploads', $data['image']);
+            $data['image'] = $img_path;
+        }elseif($request['delete-img'] == 'on'){
+            //elimina l'immagine
+            Storage::delete($project->image);
+            $data['image'] = null;
+        }
         // se l'utente non inserisce uno slug
         if(!empty($data['slug'])){
             $data['slug'] = Str::of($data['slug'])->slug('-');
@@ -112,6 +125,7 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        Storage::delete($project->image);
         $project->delete();
         return redirect()->route('admin.projects.index')->with('message', 'Post deleted correctly');
     }
